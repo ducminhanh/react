@@ -5,6 +5,9 @@ import ProductDetail from "./components/ProductDetail";
 import ProductAdd from "./components/ProductAdd";
 import ProductEdit from "./components/ProductEdit";
 import CategoryList from "./components/CategoryList";
+import BrandList from "./components/BrandList"; 
+import UserList from "./components/UserList"; // Thêm import
+
 
 function App() {
   const router = createBrowserRouter([
@@ -38,11 +41,11 @@ function App() {
     },
     {
       path: "/users",
-      element: <CategoryList />,
+      element: <UserList  />,
     },
     {
       path: "/brands",
-      element: <CategoryList />,
+      element: <BrandList  />,
     },
   ]);
 

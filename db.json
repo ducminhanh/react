@@ -21,5 +21,29 @@
       "id": 3,
       "name": "Laptops"
     }
+  ],
+  "brands": [
+    {
+      "id": 2,
+      "name": "Samsung"
+    },
+    {
+      "id": 3,
+      "name": "Xiaomi"
+    }
+  ],
+  "users": [
+    {
+      "id": 2,
+      "name": "Trần Thị B",
+      "email": "b@example.com",
+      "role": "user"
+    },
+    {
+      "id": 3,
+      "name": "Lê Văn C",
+      "email": "c@example.com",
+      "role": "user"
+    }
   ]
 }
