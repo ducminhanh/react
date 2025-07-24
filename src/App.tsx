@@ -7,6 +7,9 @@ import ProductEdit from "./components/ProductEdit";
 import CategoryList from "./components/CategoryList";
 import BrandList from "./components/BrandList"; 
 import UserList from "./components/UserList"; // Thêm import
+import CategoryAdd from "./components/CategoryAdd";
+import BrandAdd from "./components/BrandAdd";
+
 
 
 function App() {
@@ -36,6 +39,11 @@ function App() {
       element: <CategoryList />,
     },
     {
+     path: "/category/add",
+     element: <CategoryAdd />,
+   },
+
+    {
       path: "/orders",
       element: <CategoryList />,
     },
@@ -47,6 +55,11 @@ function App() {
       path: "/brands",
       element: <BrandList  />,
     },
+    {
+     path: "/brands/add",
+     element: <BrandAdd />,
+   }
+    
   ]);
 
   return <RouterProvider router={router} />;

@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 interface Brand {
   id: number;
   name: string;
+  logo?: string;
+  description?: string;
 }
 
 export default function BrandList() {
@@ -16,7 +18,7 @@ export default function BrandList() {
     return res.json();
   };
 
-  const { data: brands, isLoading, error, refetch } = useQuery<Brand[]>({
+  const { data: brands, isLoading, error } = useQuery<Brand[]>({
     queryKey: ["brands"],
     queryFn: fetchBrands,
   });
@@ -31,34 +33,35 @@ export default function BrandList() {
       dataIndex: "name",
     },
     {
+      title: "Logo",
+      dataIndex: "logo",
+      render: (logo: string) =>
+        logo ? (
+          <img src={logo} alt="logo" style={{ width: 60, height: 40, objectFit: "contain" }} />
+        ) : (
+          "Không có"
+        ),
+    },
+    {
+      title: "Mô tả",
+      dataIndex: "description",
+    },
+    {
       title: "Thao tác",
       render: (_: any, record: Brand) => (
-        <Button
-          danger
-          onClick={async () => {
-            const confirm = window.confirm(`Xoá thương hiệu "${record.name}"?`);
-            if (confirm) {
-              const res = await fetch(`http://localhost:3001/brands/${record.id}`, {
-                method: "DELETE",
-              });
-              if (res.ok) {
-                message.success("Đã xoá thương hiệu");
-                refetch();
-              } else {
-                message.error("Xoá thất bại");
-              }
-            }
-          }}
-        >
-          Xoá
-        </Button>
+        <Button onClick={() => navigate(`/brands/edit/${record.id}`)}>Sửa</Button>
       ),
     },
   ];
 
   return (
     <div style={{ padding: 24 }}>
-      <h2>Danh sách thương hiệu</h2>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <h2>Danh sách thương hiệu</h2>
+        <Button type="primary" onClick={() => navigate("/brands/add")}>
+          Thêm thương hiệu
+        </Button>
+      </div>
 
       {error && <p style={{ color: "red" }}>Lỗi: {(error as Error).message}</p>}
 

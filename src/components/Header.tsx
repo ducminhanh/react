@@ -26,6 +26,17 @@ const items: MenuItem[] = [
     key: "/categories",
     icon: <UnorderedListOutlined />,
   },
+   {
+    label: "Brands",
+    key: "/brands",
+    icon: <UnorderedListOutlined />,
+  },
+  {
+    label: "users",
+    key: "/users",
+    icon: <UnorderedListOutlined />,
+  },
+
 ];
 
 const Header: React.FC = () => {

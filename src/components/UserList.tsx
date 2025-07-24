@@ -1,83 +1,83 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table, Button, message, Spin } from "antd";
+import { Image, Spin, Table } from "antd";
+import Header from "./Header";
+import { Link, useSearchParams } from "react-router-dom";
 
 interface User {
-  id: number;
+  id: string;
   name: string;
   email: string;
-  role: string;
+  password: string;
+  age: number;
 }
 
-export default function UserList() {
+function UserList() {
+  // query page, name
+  const [searchParams] = useSearchParams();
+
+  const name = searchParams.get("name");
+
   const fetchUsers = async () => {
-    const res = await fetch("http://localhost:3001/users");
-    if (!res.ok) throw new Error("Không thể tải danh sách người dùng");
+    const res = await fetch(
+      `http://localhost:3001/users?name_like=${name || ""}`
+    );
     return res.json();
   };
-
-  const {
-    data: users,
-    isLoading,
-    error,
-    refetch,
-  } = useQuery<User[]>({
+  // state data, isLoading, error
+  const { data, isLoading, error } = useQuery({
     queryKey: ["users"],
     queryFn: fetchUsers,
   });
-
-  const handleDelete = async (id: number) => {
-    const confirm = window.confirm("Bạn có chắc muốn xoá người dùng này?");
-    if (confirm) {
-      const res = await fetch(`http://localhost:3001/users/${id}`, {
-        method: "DELETE",
-      });
-      if (res.ok) {
-        message.success("Xoá thành công");
-        refetch();
-      } else {
-        message.error("Xoá thất bại");
-      }
-    }
-  };
-
   const columns = [
-    {
-      title: "ID",
-      dataIndex: "id",
+  {
+    title: "ID",
+    dataIndex: "id",
+    render: (id: number) => {
+      return <Link to={`/user/detail/${id}`}>ID: {id}</Link>;
     },
-    {
-      title: "Họ tên",
-      dataIndex: "name",
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-    },
-    {
-      title: "Quyền",
-      dataIndex: "role",
-    },
-    {
-      title: "Thao tác",
-      render: (_: any, record: User) => (
-        <Button danger onClick={() => handleDelete(record.id)}>
-          Xoá
-        </Button>
-      ),
-    },
-  ];
+  },
+  {
+    title: "Name",
+    dataIndex: "name",
+  },
+  {
+    title: "Email",
+    dataIndex: "email",
+  },
+  {
+    title: "Password",
+    dataIndex: "password",
+  },
+  {
+    title: "Age",
+    dataIndex: "age",
+  },
+  {
+    title: "Action",
+    render: (_: any, record: User) => (
+      <div style={{ display: "flex", gap: 8 }}>
+        <Link to={`/user/edit/${record.id}`}>
+          <button style={{ color: "blue" }}>Sửa</button>
+        </Link>
+        <button style={{ color: "red" }}>Xoá</button>
+      </div>
+    ),
+  },
+];
 
   return (
-    <div style={{ padding: 24 }}>
-      <h2>Danh sách người dùng</h2>
-      {error && <p style={{ color: "red" }}>Lỗi: {(error as Error).message}</p>}
+    <div>
+      <Header />
+      {error && <p>Error: {error.message}</p>}
       <Table
-        dataSource={users}
+        dataSource={data}
         columns={columns}
-        rowKey="id"
-        loading={isLoading}
-        pagination={{ pageSize: 5 }}
+        rowKey={"id"}
+        loading={isLoading} // Hiển thị spinner khi đang tải
+        pagination={{ pageSize: 5 }} // Phân trang, mỗi trang 5 bản ghi
       />
     </div>
   );
 }
+
+export default UserList;

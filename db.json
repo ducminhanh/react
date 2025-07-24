@@ -1,35 +1,57 @@
 {
   "products": [
     {
-      "name": "cọ bồn cầu",
-      "price": 1222,
-      "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Flaodong.vn%2Fphoto%2F3-nguoi-dep-co-hinh-the-nong-bong-nhat-hoa-hau-viet-nam-2022-1128512.ldo&psig=AOvVaw2JzMwUgUem2AUjTkeAdT66&ust=1753326905880000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOi2gpKC0o4DFQAAAAAdAAAAABAE",
-      "description": "người đẹp",
-      "id": 1
+      "name": "cai nay la cai gì",
+      "price": 12323,
+      "image": "https://cdnphoto.dantri.com.vn/GQCHrjCVuEcWujC1ivKzhZnnxC0=/2020/12/16/ngam-dan-hot-girl-xinh-dep-noi-bat-nhat-nam-2020-docx-1608126693063.jpeg",
+      "description": "ádas",
+      "id": 7
+    },
+    {
+      "name": "ưducminahn",
+      "price": 123213,
+      "image": "https://cdnphoto.dantri.com.vn/GQCHrjCVuEcWujC1ivKzhZnnxC0=/2020/12/16/ngam-dan-hot-girl-xinh-dep-noi-bat-nhat-nam-2020-docx-1608126693063.jpeg",
+      "description": "la gi đay",
+      "id": 8
+    },
+    {
+      "name": "sads",
+      "price": 213,
+      "image": "https://cdnphoto.dantri.com.vn/GQCHrjCVuEcWujC1ivKzhZnnxC0=/2020/12/16/ngam-dan-hot-girl-xinh-dep-noi-bat-nhat-nam-2020-docx-1608126693063.jpeg",
+      "description": "ádsad",
+      "id": 9
     }
   ],
   "categories": [
     {
-      "id": 1,
-      "name": "Smartphones"
-    },
-    {
-      "id": 2,
-      "name": "Tablets"
-    },
-    {
-      "id": 3,
-      "name": "Laptops"
+      "name": "s",
+      "image": "https://cdnphoto.dantri.com.vn/GQCHrjCVuEcWujC1ivKzhZnnxC0=/2020/12/16/ngam-dan-hot-girl-xinh-dep-noi-bat-nhat-nam-2020-docx-1608126693063.jpeg",
+      "description": "minanh",
+      "id": 1
     }
   ],
   "brands": [
     {
-      "id": 2,
-      "name": "Samsung"
-    },
-    {
       "id": 3,
       "name": "Xiaomi"
+    },
+    {
+      "name": "cọ bồn cầu",
+      "logo": "https://cdnphoto.dantri.com.vn/GQCHrjCVuEcWujC1ivKzhZnnxC0=/2020/12/16/ngam-dan-hot-girl-xinh-dep-noi-bat-nhat-nam-2020-docx-1608126693063.jpeg",
+      "description": "sadasd",
+      "id": 4
+    },
+    {
+      "name": "sadknsalkd",
+      "logo": "dsamlkdsa",
+      "description": "sadsad",
+      "id": 5
+    },
+    {
+      "name": "đas",
+      "logo": "sadssadsa",
+      "description": "sadsa",
+      "id": 6
     }
   ],
   "users": [

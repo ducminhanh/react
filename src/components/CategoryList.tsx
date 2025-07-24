@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { Table } from "antd";
+import { Button, Table } from "antd";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 
 function CategoryList() {
@@ -15,23 +16,41 @@ function CategoryList() {
 
   const columns = [
     {
-      title: "So thu tu",
+      title: "Số thứ tự",
       dataIndex: "id",
     },
     {
-      title: "Ten danh muc",
+      title: "Tên danh mục",
       dataIndex: "name",
+    },
+    {
+      title: "Hình ảnh",
+      dataIndex: "image",
+      render: (src: string) => (
+        <img src={src} alt="Ảnh" style={{ width: 80 }} />
+      ),
+    },
+    {
+      title: "Mô tả",
+      dataIndex: "description",
+    },
+    {
+      title: "Thao tác",
+      render: () => <Button type="link">Sửa</Button>, // Bạn có thể bổ sung logic sửa sau
     },
   ];
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <Header />
-      {/* {isLoading && <Spin />} */}
-      {/* {error && <p>Error: {error.message}</p>} */}
-      {/* {data?.map((item: Product) => (
-        <p key={item.id}>{item.name}</p>
-      ))} */}
+
+      <div style={{ display: "flex", justifyContent: "space-between", margin: "20px 0" }}>
+        <h2>Danh sách danh mục</h2>
+        <Link to="/category/add">
+          <Button type="primary">+ Thêm danh mục</Button>
+        </Link>
+      </div>
+
       <Table
         dataSource={data}
         columns={columns}
